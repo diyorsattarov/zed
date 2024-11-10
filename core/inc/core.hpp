@@ -1,8 +1,25 @@
+/****************************************************************************
+ * File: core.hpp
+ * Author: Diyor Sattarov
+ * Email: diyorsattarov@outlook.com
+ *
+ * Created: 2024-10-09
+ * Last Modified: 2024-10-05
+ *
+ * Description:
+ * This header file defines the `Server` class, which encapsulates the 
+ * functionality of a simple HTTP server. The `Server` class uses the `b` class 
+ * from the `utility` component for networking and integrates with `n` 
+ * structures from the `common` component to manage data.
+ *
+ * Copyright (c) 2024 diyorsattarov. All rights reserved.
+ ****************************************************************************/
+
 #ifndef CORE_HPP
 #define CORE_HPP
 
+#include <n.hpp>
 #include <b.hpp>
-#include <string>
 
 class Server {
 public:

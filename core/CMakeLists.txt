@@ -17,6 +17,7 @@ add_library(${PROJECT_NAME} STATIC
 # Include the core's inc/ directory
 target_include_directories(${PROJECT_NAME} PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}/inc
+    ${CMAKE_CURRENT_SOURCE_DIR}/../common/inc # Add path to n.hpp
 )
 
 # Conditionally link to `zed_b` and `zed_n` if they don't already exist
@@ -30,9 +31,10 @@ endif()
 # Link to `zed_b` and `zed_n`
 target_link_libraries(${PROJECT_NAME} PRIVATE zed_b zed_n)
 
-# Ensure `utility/inc/` is included for executables
+# Ensure `utility/inc/` and `common/inc/` are included for executables
 target_include_directories(${PROJECT_NAME} PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}/../utility/inc
+    ${CMAKE_CURRENT_SOURCE_DIR}/../common/inc
 )
 
 # Macro for adding executables
@@ -40,6 +42,7 @@ macro(add_core_executable name)
     add_executable(${name}.out ${CMAKE_CURRENT_SOURCE_DIR}/tests/${name}.cpp)
     target_include_directories(${name}.out PRIVATE
         ${CMAKE_CURRENT_SOURCE_DIR}/../utility/inc
+        ${CMAKE_CURRENT_SOURCE_DIR}/../common/inc # Include n.hpp for test executables
     )
     target_link_libraries(${name}.out ${PROJECT_NAME})
 endmacro()
